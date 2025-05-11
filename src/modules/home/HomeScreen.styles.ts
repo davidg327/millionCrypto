@@ -5,5 +5,10 @@ export const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: Colors.background,
-    }
+    },
+    containerLoad: {
+        alignItems: 'center',
+        flex: 1,
+        justifyContent: 'center'
+    },
 })
