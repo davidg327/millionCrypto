@@ -2,14 +2,14 @@ import { create } from 'zustand';
 import {getGlobal} from '../../actions';
 import {IGlobal} from '../../interface';
 
-export interface IAuthState {
+export interface IGlobalState {
   loadGlobal: boolean;
   successGlobal: boolean;
   getGlobal: () => Promise<void>;
   global: IGlobal | null;
 }
 
-export const useGlobalStore = create<IAuthState>()((set, _get) => ({
+export const useGlobalStore = create<IGlobalState>()((set, _get) => ({
   loadGlobal: false,
   successGlobal: false,
   global: null,
