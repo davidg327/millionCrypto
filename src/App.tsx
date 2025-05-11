@@ -7,18 +7,15 @@
 
 import React from 'react';
 import Navigation from './navigation';
-//import {ToastProviderComponent} from './components/molecules';
+import {ToastProviderComponent} from './components/molecules';
 
 function App(): React.JSX.Element {
 
   return (
-      <Navigation />
+      <ToastProviderComponent>
+        <Navigation />
+      </ToastProviderComponent>
   );
 }
 
 export default App;
-
-{/*
-      <ToastProviderComponent>
-          <Navigation />
-      </ToastProviderComponent>*/}
