@@ -44,7 +44,7 @@ export const FavoriteTemplate = ({redirectDetail}: IFavoriteTemplate) => {
         setOrderRankDesc(value);
         if (value){
             setOrderRankAsc(false);
-        };
+        }
     };
 
     const handleOrderPriceAsc = (value: boolean) => {
@@ -88,7 +88,6 @@ export const FavoriteTemplate = ({redirectDetail}: IFavoriteTemplate) => {
 
     const handleApplyFilter = () => {
         const newInfo = sortData(favorites, orderRankAsc, orderRankDesc, orderPriceAsc, orderPriceDesc);
-        console.log(newInfo, 'aca');
         setSearch(newInfo);
         sheetRef?.current?.dismiss();
     };

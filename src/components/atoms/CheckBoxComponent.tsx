@@ -1,5 +1,6 @@
 import React from 'react';
-import CheckBox from '@react-native-community/checkbox';
+import {Pressable} from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 interface ICheckBoxComponent {
     checked: boolean;
@@ -11,9 +12,8 @@ export const CheckBoxComponent = ({
                                       toggleCheckbox,
 }: ICheckBoxComponent) => {
     return (
-      <CheckBox
-        value={checked}
-        onValueChange={toggleCheckbox}
-      />
+        <Pressable onPress={() => toggleCheckbox(!checked)}>
+            {checked ? <Icon name="check-box" size={30} /> : <Icon name="check-box-outline-blank" size={30} />}
+        </Pressable>
     );
 };

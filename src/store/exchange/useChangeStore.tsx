@@ -1,6 +1,6 @@
 import {create} from 'zustand';
 import {getExchanges, getInfoExchange} from '../../actions';
-import {IExchange, IPairs} from "../../interface";
+import {IExchange, IPairs} from '../../interface';
 
 export interface IExchangeState {
   loadExchange: boolean
@@ -23,7 +23,7 @@ export const useExchangeStore = create<IExchangeState>()((set, _get) => ({
   pairs: [],
   getExchanges: async () => {
     set({
-      loadExchange: true
+      loadExchange: true,
     });
     try {
       const response = await getExchanges();
@@ -32,29 +32,28 @@ export const useExchangeStore = create<IExchangeState>()((set, _get) => ({
           id: response.id,
           name: response.name,
           url: response.url,
-          country: response.country || 'No conocido'
-        }
-      })
+          country: response.country || 'No conocido',
+        };
+      });
       set({
         loadExchange: false,
         successExchange: true,
-        exchanges: orderResponse
+        exchanges: orderResponse,
       });
     }
     catch (error) {
       set({
-        loadExchange: false
+        loadExchange: false,
       });
     }
   },
   getInfoExchange: async (id: string) => {
     set({
       loadPairs: true,
-      pairs: []
+      pairs: [],
     });
     try {
       const response = await getInfoExchange(id);
-      console.log(response, 'aca que paso');
       set({
         loadPairs: false,
         successPairs: true,
@@ -63,7 +62,7 @@ export const useExchangeStore = create<IExchangeState>()((set, _get) => ({
     }
     catch (error) {
       set({
-        loadPairs: false
+        loadPairs: false,
       });
     }
   },
