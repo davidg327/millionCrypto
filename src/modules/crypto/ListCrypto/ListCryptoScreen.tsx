@@ -1,11 +1,17 @@
 import React, {useEffect} from 'react';
 import {SafeAreaView} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {ListCryptoTemplate} from '../components/templates';
+import {CryptoStackParamList} from '../../../navigation';
 import {useCryptoStore} from '../../../store';
+import {ICrypto} from '../../../interface';
 import {styles} from './ListCryptoScreen.styles.ts';
 
-export const ListCryptoScreen = () => {
+type CryptoNavigation = NativeStackNavigationProp<CryptoStackParamList, 'Crypto'>;
 
+export const ListCryptoScreen = () => {
+    const navigation = useNavigation<CryptoNavigation>();
     const start = useCryptoStore(state =>  state.start);
     const {getCryptos} = useCryptoStore();
 
@@ -16,6 +22,10 @@ export const ListCryptoScreen = () => {
         }
     };
 
+    const redirectDetail = (crypto: ICrypto) => {
+        navigation.navigate('Detail', {crypto: crypto});
+    };
+
     useEffect(() => {
         if(start === 0){
             getCryptos(0);
@@ -24,7 +34,7 @@ export const ListCryptoScreen = () => {
 
     return (
         <SafeAreaView style={styles.container}>
-            <ListCryptoTemplate moreData={moreData} />
+            <ListCryptoTemplate moreData={moreData} redirectDetail={redirectDetail} />
         </SafeAreaView>
     );
 };

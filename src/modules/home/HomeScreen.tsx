@@ -12,7 +12,6 @@ export const HomeScreen = () => {
     const {
         loadGlobal,
         successGlobal,
-        global,
         getGlobal,
     } = useGlobalStore();
 

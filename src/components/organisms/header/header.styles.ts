@@ -10,6 +10,7 @@ export const headerStyles = StyleSheet.create({
         left: 20,
         position: 'absolute',
         top: 7,
+        zIndex: 1,
     },
     text: {
         color: Colors.white,

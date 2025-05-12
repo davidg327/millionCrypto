@@ -9,3 +9,11 @@ export const getCryptos = async (start: number) => {
     throw error;
   }
 };
+
+export const getMarkets = async (id: string) => {
+  try {
+    return await cryptoService.getMarket(id);
+  } catch (error) {
+    throw error;
+  }
+};

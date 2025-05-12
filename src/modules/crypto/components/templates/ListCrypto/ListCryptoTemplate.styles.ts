@@ -16,5 +16,5 @@ export const styles = StyleSheet.create({
         color: Colors.text,
         marginTop: 20,
         textAlign: 'center',
-    }
+    },
 });

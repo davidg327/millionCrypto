@@ -7,8 +7,15 @@ export class CryptoService {
 
     async getCryptos(start: number): Promise<any> {
         try {
-            console.log('url:', `tickers/?start=${start}&limit=20`);
             return await CryptoService.httpClient.get<any>(`tickers/?start=${start}&limit=20`);
+        } catch (error) {
+            HandleApiError(error);
+        }
+    }
+
+    async getMarket(id: string): Promise<any> {
+        try {
+            return await CryptoService.httpClient.get<any>(`coin/markets/?id=${id}`);
         } catch (error) {
             HandleApiError(error);
         }

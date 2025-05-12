@@ -8,9 +8,10 @@ import {headerStyles} from './header.styles.ts';
 interface IHeader {
     name: string;
     goBack?: () => void;
+    iconRight?: React.ReactElement;
 }
 
-export const Header = ({ name, goBack }: IHeader) => {
+export const Header = ({ name, goBack, iconRight }: IHeader) => {
     return (
         <View style={headerStyles.container}>
             {goBack && (
@@ -19,6 +20,7 @@ export const Header = ({ name, goBack }: IHeader) => {
                 </Pressable>
             )}
             <TextComponent styles={headerStyles.text} text={name} />
+            {iconRight}
         </View>
     );
 };

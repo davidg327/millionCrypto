@@ -8,7 +8,8 @@ interface IFlatListComponent {
     empty?: React.ReactElement<any>;
     footer?: React.ReactElement<any>;
     contentStyle?: ViewStyle;
-    loadMoreCryptos: () => void;
+    loadMoreCryptos?: () => void;
+    activeIndex?: boolean;
 }
 
 export const FlatListComponent = ({
@@ -19,6 +20,7 @@ export const FlatListComponent = ({
                                       contentStyle,
                                       loadMoreCryptos,
                                       footer,
+                                      activeIndex,
                                   }: IFlatListComponent) => {
     return (
         <FlatList
@@ -26,7 +28,7 @@ export const FlatListComponent = ({
             renderItem={renderItem}
             style={style}
             contentContainerStyle={contentStyle}
-            keyExtractor={(item) => item.id}
+            keyExtractor={(item, index) =>  activeIndex ? index : item.id}
             ListEmptyComponent={empty}
             ListFooterComponent={footer}
             showsVerticalScrollIndicator={false}

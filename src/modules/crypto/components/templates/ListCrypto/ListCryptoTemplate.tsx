@@ -5,8 +5,8 @@ import {CardCrypto} from '../../organisms';
 import {Header} from '../../../../../components/organisms';
 import {useCryptoStore} from '../../../../../store';
 import {ICrypto} from '../../../../../interface';
+import {Colors} from '../../../../../theme';
 import {styles} from './ListCryptoTemplate.styles.ts';
-import {Colors} from "../../../../../theme";
 
 interface IItem {
     item: ICrypto;
@@ -14,19 +14,20 @@ interface IItem {
 
 interface IListCryptoTemplate {
     moreData: () => void;
+    redirectDetail: (crypto: ICrypto) => void;
 }
 
-export const ListCryptoTemplate = ({moreData}: IListCryptoTemplate) => {
+export const ListCryptoTemplate = ({moreData, redirectDetail}: IListCryptoTemplate) => {
 
     const {loadCryptos, start, cryptos} = useCryptoStore();
 
     const Item = ({item}: IItem) => {
-
         return (
             <CardCrypto
                 symbol={item.symbol}
                 priceDollar={item.price_usd}
                 change={item.percent_change_1h}
+                onPress={() => redirectDetail(item)}
             />
         );
     };

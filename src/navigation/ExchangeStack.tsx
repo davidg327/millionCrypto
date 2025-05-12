@@ -8,7 +8,7 @@ export type ExchangeStackParamList = {
 
 const Stack = createNativeStackNavigator<ExchangeStackParamList>();
 
-const AppStackNavigator = ({}) => {
+const ExchangeStackNavigator = ({}) => {
     return (
         <Stack.Navigator screenOptions={{ headerShown: false }}>
             <Stack.Screen name="Exchange" children={ListExchangeScreen} />
@@ -16,4 +16,4 @@ const AppStackNavigator = ({}) => {
     );
 };
 
-export default AppStackNavigator;
+export default ExchangeStackNavigator;
