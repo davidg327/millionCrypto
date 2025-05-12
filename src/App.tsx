@@ -6,15 +6,21 @@
  */
 
 import React from 'react';
-import Navigation from './navigation';
+import {BottomSheetModalProvider} from '@gorhom/bottom-sheet';
+import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import {ToastProviderComponent} from './components/molecules';
+import Navigation from './navigation';
 
 function App(): React.JSX.Element {
 
   return (
-      <ToastProviderComponent>
-        <Navigation />
-      </ToastProviderComponent>
+      <GestureHandlerRootView style={{flex: 1}}>
+          <ToastProviderComponent>
+              <BottomSheetModalProvider>
+                  <Navigation />
+              </BottomSheetModalProvider>
+          </ToastProviderComponent>
+      </GestureHandlerRootView>
   );
 }
 

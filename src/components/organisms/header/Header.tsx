@@ -8,7 +8,7 @@ import {headerStyles} from './header.styles.ts';
 interface IHeader {
     name: string;
     goBack?: () => void;
-    iconRight?: React.ReactElement;
+    iconRight?: React.ReactElement | null;
 }
 
 export const Header = ({ name, goBack, iconRight }: IHeader) => {
