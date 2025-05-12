@@ -5,12 +5,13 @@ import {HomeScreen} from '../modules/home';
 import CryptoStack from './CryptoStack.tsx';
 import ExchangeStack from './ExchangeStack.tsx';
 import {FavoriteScreen} from '../modules/favorite';
+import FavoriteStack from "./FavoriteStack.tsx";
 
 export type TRootMainTabParams = {
     Home: undefined;
     CryptoStack: undefined;
     ExchangeStack: undefined;
-    Favorite: undefined;
+    FavoriteStack: undefined;
 };
 
 const Tab = createBottomTabNavigator<TRootMainTabParams>();
@@ -25,7 +26,7 @@ const TabStack = ({}) => {
             <Tab.Screen name="Home" component={HomeScreen} />
             <Tab.Screen name="CryptoStack" component={CryptoStack} />
             <Tab.Screen name="ExchangeStack" component={ExchangeStack} />
-            <Tab.Screen name="Favorite" component={FavoriteScreen} />
+            <Tab.Screen name="FavoriteStack" component={FavoriteStack} />
         </Tab.Navigator>
     );
 }

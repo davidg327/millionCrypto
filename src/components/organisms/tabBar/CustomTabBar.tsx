@@ -44,7 +44,7 @@ const routeIcons: { [key: string]: RouteIcon } = {
         ),
         name: 'Intercambios',
     },
-    Favorite: {
+    FavoriteStack: {
         icon: (color: string) => (
             <FontAwesome name={'heart'} color={color} size={25} />
         ),

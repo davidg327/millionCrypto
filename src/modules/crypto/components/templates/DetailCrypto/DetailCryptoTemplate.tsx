@@ -1,5 +1,5 @@
 import React from 'react';
-import {View} from 'react-native';
+import {Pressable, View} from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {FlatListComponent, LoadingComponent, TextComponent} from '../../../../../components/atoms';
 import {CardMarkets} from '../../organisms';
@@ -9,18 +9,30 @@ import {formatCurrency, getColor} from '../../../../../functions';
 import {ICrypto, IMarket} from '../../../../../interface';
 import {Colors} from '../../../../../theme';
 import {styles} from './DetailCryptoTemplate.styles.ts';
+import {useFavoriteStore} from "../../../../../store/favorite";
 
 interface IDetailCryptoTemplate {
     crypto: ICrypto;
     goBack: () => void;
+    pressFavorite: () => void;
 }
 
 interface IItem {
     item: IMarket;
 }
 
-export const DetailCryptoTemplate = ({crypto, goBack}: IDetailCryptoTemplate) => {
+const favoriteCrypto = (favorites: ICrypto[], cryptoId: string) => {
+    const findFavorite = favorites.find((favorite) => favorite.id === cryptoId);
+    if(findFavorite !== undefined){
+        return 'heart'
+    }else {
+        return 'heart-o'
+    }
+};
+
+export const DetailCryptoTemplate = ({crypto, goBack, pressFavorite}: IDetailCryptoTemplate) => {
     const {markets, loadMarkets} = useCryptoStore();
+    const {favorites} = useFavoriteStore();
 
    const Item = ({item}: IItem) => {
         return (
@@ -38,9 +50,9 @@ export const DetailCryptoTemplate = ({crypto, goBack}: IDetailCryptoTemplate) =>
             <Header
                 name={crypto?.name}
                 goBack={goBack}
-                iconRight={<View style={styles.favorite}>
-                    <FontAwesome name={"heart-o"} color={Colors.white} size={35} />
-                </View>}
+                iconRight={<Pressable style={styles.favorite} onPress={pressFavorite}>
+                    <FontAwesome name={favoriteCrypto(favorites, crypto.id)} color={Colors.white} size={35} />
+                </Pressable>}
             />
             <View style={styles.containerCardPrincipal}>
                 <View style={styles.containerInfoText}>
