@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import {Pressable, View} from 'react-native';
 import {TextComponent} from '../../../../../components/atoms';
 import {formatCurrency, getColor} from '../../../../../functions';
@@ -22,5 +22,5 @@ export const CardCrypto = ({symbol, priceDollar, change, onPress}: ICardCrypto) 
                 </View>
             </View>
         </Pressable>
-    )
-}
+    );
+};
