@@ -13,14 +13,34 @@ interface ICardCrypto {
 
 export const CardCrypto = ({symbol, priceDollar, change, onPress}: ICardCrypto) => {
     return (
-        <Pressable style={CardCryptosStyles.container} onPress={onPress}>
-            <TextComponent styles={CardCryptosStyles.textBold} text={symbol} />
-            <View style={CardCryptosStyles.containerPrice}>
-                <TextComponent styles={CardCryptosStyles.textSimple} text={formatCurrency(priceDollar)} />
-                <View style={{...CardCryptosStyles.containerStatus, backgroundColor: getColor(change)}}>
-                    <TextComponent styles={CardCryptosStyles.textStatus} text={`${change}%`} />
-                </View>
-            </View>
-        </Pressable>
+      <Pressable
+        testID={'Container-Card-Crypto'}
+        style={CardCryptosStyles.container}
+        onPress={onPress}>
+        <TextComponent
+          testId={'Text-Symbol'}
+          styles={CardCryptosStyles.textBold}
+          text={symbol}
+        />
+        <View style={CardCryptosStyles.containerPrice}>
+          <TextComponent
+            testId={'Function-Price-Dolar'}
+            styles={CardCryptosStyles.textSimple}
+            text={formatCurrency(priceDollar)}
+          />
+          <View
+            testID="Container-Change-Status"
+            style={{
+              ...CardCryptosStyles.containerStatus,
+              backgroundColor: getColor(change),
+            }}>
+            <TextComponent
+              testId={'Text-Change'}
+              styles={CardCryptosStyles.textStatus}
+              text={`${change}%`}
+            />
+          </View>
+        </View>
+      </Pressable>
     );
 };

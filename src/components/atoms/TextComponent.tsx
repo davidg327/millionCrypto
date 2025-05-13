@@ -6,6 +6,7 @@ interface ITextComponent {
     text?: string;
     children?: React.ReactNode;
     number?: number;
+    testId?: string;
 }
 
 export const TextComponent = ({
@@ -13,12 +14,15 @@ export const TextComponent = ({
                                   text,
                                   children,
                                   number,
+                                  testId,
 }: ITextComponent) => {
     return (
         <Text
             allowFontScaling={false}
             style={styles}
-            numberOfLines={number}>
+            numberOfLines={number}
+            testID={testId}
+        >
             {text}
             {children}
         </Text>
